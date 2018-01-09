@@ -1,20 +1,17 @@
 ---
 language: objective-c
-env:
-  matrix:
-    - FORMULA_VERSION=--HEAD
-rvm: system
+
+os:
+  - osx
+
 before_install:
   - brew update
-  - brew --env
-  - brew config
+
 install:
-  - mkdir -p $(brew --repo)/Library/Taps/sublercli
+  - mkdir -p $(brew --repo)/Library/Taps/derphilipp
   - ln -s $TRAVIS_BUILD_DIR $(brew --repo)/Library/Taps/derphilipp/homebrew-sublercli
 script:
   - brew install sublercli --HEAD --verbose
   - brew audit sublercli --strict --except=specs
   - brew test sublercli
   - SublerCLI -version
-matrix:
-  fast_finish: true
