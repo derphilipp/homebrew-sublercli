@@ -37,3 +37,4 @@ script:
 
 before_install:
   - ssh-keyscan -t rsa -T 30 -H bitbucket.org | tee -a $HOME/.ssh/known_hosts
+  - ssh-keyscan -t rsa -T 30 -H 104.192.143.1 | tee -a $HOME/.ssh/known_hosts
