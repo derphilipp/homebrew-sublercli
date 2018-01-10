@@ -22,6 +22,7 @@ matrix:
 addons:
   ssh_known_hosts:
     - bitbucket.org
+    - 104.192.143.1
 
 # before_install:
 #   - brew update
