@@ -18,12 +18,17 @@ matrix:
       osx_image:
         xcode9.2
 
+
 # before_install:
 #   - brew update
 
 install:
   - mkdir -p $(brew --repo)/Library/Taps/derphilipp
   - ln -s $TRAVIS_BUILD_DIR $(brew --repo)/Library/Taps/derphilipp/homebrew-sublercli
+
+before_script:
+  - echo -e "Host bitbucket.org\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+
 script:
   - brew install sublercli --HEAD --verbose
   - brew audit sublercli --strict --except=specs
