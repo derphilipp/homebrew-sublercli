@@ -1,6 +1,7 @@
 ---
 language: objective-c
 
+
 matrix:
   fast_finish:
     true
@@ -19,10 +20,6 @@ matrix:
         xcode9.2
 
 
-addons:
-  ssh_known_hosts:
-    - bitbucket.org
-    - 104.192.143.1
 
 # before_install:
 #   - brew update
@@ -36,3 +33,7 @@ script:
   - brew audit sublercli --strict --except=specs
   - brew test sublercli
   - SublerCLI -version
+
+
+before_install:
+  - ssh-keyscan -t rsa -T 30 -H bitbucket.org | tee -a $HOME/.ssh/known_hosts
